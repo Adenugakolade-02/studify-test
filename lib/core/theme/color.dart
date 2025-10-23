@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class AppColors{
   AppColors._();
 
   static const Color whiteBackground = Color(0xFFF9F9FB);
+  static const Color whiteSurface = Color(0xFFFFFFFF);
+  static const Color borderSurface = Color(0xFFE2E2E8);
 
   static const Color iconGrey = Color(0xFFE2E2E8);
   static const Color primaryPurple = Color(0xFF5B3FFF);

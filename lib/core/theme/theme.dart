@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studify/core/constants/font_type.dart';
 import 'package:studify/core/theme/color.dart';
 
 class AppTheme{
@@ -28,6 +29,7 @@ class AppTheme{
         shadowColor: Colors.transparent,
         minimumSize: Size.fromHeight(43),
         textStyle: TextStyle(
+          fontFamily: FontType.inter,
           fontWeight: FontWeight.w500,
           fontSize: 14,
           color: AppColors.whiteBackground
