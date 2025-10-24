@@ -6,4 +6,5 @@ class AppImages {
   static const quizStudy = "assets/images/academic_cap.png";
   static const competitionQuiz = "assets/images/Users Group Two Rounded.png";
   static const documentImage = "assets/images/document_image.png";
+  static const winnerTrophy = "assets/images/winners_trophy.png";
 }
