@@ -8,28 +8,22 @@ import 'package:studify/app/presentation/widgets/app_button.dart';
 import 'package:studify/core/constants/app_images.dart';
 import 'package:studify/core/constants/app_svgs.dart';
 import 'package:studify/core/constants/font_type.dart';
+import 'package:studify/core/router/router.dart';
 import 'package:studify/core/theme/color.dart';
 import 'package:studify/core/theme/theme.dart';
 
-class HomePageScreen extends ConsumerStatefulWidget {
-  const HomePageScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _HomePageScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageScreenState extends ConsumerState<HomePageScreen> {
+class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: ProfileIcon(
-      //     profileUrl: AppImages.profileUrl, 
-      //     rank: "12th", 
-      //     name: "Divine"
-      //   ),
-      // ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 19),
@@ -67,7 +61,7 @@ class _HomePageScreenState extends ConsumerState<HomePageScreen> {
                   child: AppButton(
                     icon: Icon(Icons.add), 
                     text: "Upload new file", 
-                    onPressed: (){}
+                    onPressed: ()=>AppRoute.go(AppRoute.documentLoadingScreen)
                   ),
                 ),
               )

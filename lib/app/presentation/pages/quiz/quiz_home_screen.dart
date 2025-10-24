@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:studify/app/presentation/pages/quiz/widget/quiz_info_tile.dart';
 import 'package:studify/app/presentation/widgets/app_button.dart';
 import 'package:studify/app/presentation/widgets/back_button.dart';
 import 'package:studify/core/constants/app_svgs.dart';
 import 'package:studify/core/constants/font_type.dart';
+import 'package:studify/core/router/router.dart';
 import 'package:studify/core/theme/color.dart';
 
-class QuizHomeScreen extends ConsumerStatefulWidget {
+class QuizHomeScreen extends StatefulWidget {
   const QuizHomeScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _QuizHomeScreenState();
+  State<QuizHomeScreen> createState() => _QuizHomeScreenState();
 }
 
-class _QuizHomeScreenState extends ConsumerState<QuizHomeScreen> {
+class _QuizHomeScreenState extends State<QuizHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,8 @@ class _QuizHomeScreenState extends ConsumerState<QuizHomeScreen> {
         child: Padding(
           padding: EdgeInsetsGeometry.symmetric(horizontal: 19),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            
             children: [
               const SizedBox(height: 18,),
               SvgPicture.asset(AppSvgs.notes),
@@ -55,12 +57,15 @@ class _QuizHomeScreenState extends ConsumerState<QuizHomeScreen> {
               QuizInfoTile(title: "No time limit", subtitle: "Self-paced lets you set a high score and break it.", iconUrl: AppSvgs.clock),
               QuizInfoTile(title: "Grading and points", subtitle: "1 pt for quiz completion, 3 pts for a correct answer.", iconUrl: AppSvgs.check),
               const Spacer(),
-              SizedBox(
-                height: 173,
-                child: AppButton(
-                  icon: SizedBox(), 
-                  text: "Proceed", 
-                  onPressed: (){}),
+              Center(
+                child: SizedBox(
+                  width: 173,
+                  child: AppButton(
+                    icon: SizedBox(), 
+                    text: "Proceed", 
+                    onPressed: ()=>AppRoute.go(AppRoute.activeQuizScreen)
+                  ),
+                ),
               )
             ],
           ),

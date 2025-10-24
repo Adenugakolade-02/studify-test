@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:studify/app/presentation/widgets/aurora_background.dart';
 import 'package:studify/core/constants/app_images.dart';
 import 'package:studify/core/constants/font_type.dart';
+import 'package:studify/core/router/router.dart';
 import 'package:studify/core/theme/color.dart';
 
 class DocumentLoadingScreen extends StatefulWidget {
@@ -31,17 +32,18 @@ class _DocumentLoadingScreenState extends State<DocumentLoadingScreen> {
         });
       }else{
         timer.cancel();
+        Future.delayed(
+          Duration(milliseconds: 500), (){
+            AppRoute.go(AppRoute.textSummaryScreen);
+          }
+        );
       }
     });
   }
   @override
   void initState() {
     super.initState();
-    Future.delayed(
-      Duration(milliseconds: 300), (){
-        simulatingNextStep();
-      }
-    );
+    simulatingNextStep();
     
   }
   @override

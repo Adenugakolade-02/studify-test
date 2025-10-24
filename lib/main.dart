@@ -5,6 +5,8 @@ import 'package:studify/app/presentation/pages/home/text_summary_screen.dart';
 import 'package:studify/app/presentation/pages/quiz/active_quiz_screen.dart';
 import 'package:studify/app/presentation/pages/quiz/quiz_congratulations_screen.dart';
 import 'package:studify/app/presentation/widgets/aurora_background.dart';
+import 'package:studify/core/router/app_routes.dart';
+import 'package:studify/core/services/navigation_service.dart';
 import 'package:studify/core/theme/theme.dart';
 
 void main() {
@@ -20,7 +22,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.light,
-      home: ActiveQuizScreen(),
+      home: HomeScreen(),
+      onGenerateRoute: AppRouter.generateRoute,
+      navigatorKey: NavigatorService.instance.navigatorKey,
     );
   }
 }

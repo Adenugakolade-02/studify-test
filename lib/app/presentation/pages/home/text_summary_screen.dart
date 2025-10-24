@@ -11,14 +11,14 @@ import 'package:studify/core/constants/font_type.dart';
 import 'package:studify/core/theme/color.dart';
 // import 'package:studify/core/extensions/context_extension.dart';
 
-class TextSummaryScreen extends ConsumerStatefulWidget {
+class TextSummaryScreen extends StatefulWidget {
   const TextSummaryScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _TextSummaryScreenState();
+  State<TextSummaryScreen> createState() => _TextSummaryScreenState();
 }
 
-class _TextSummaryScreenState extends ConsumerState<TextSummaryScreen> {
+class _TextSummaryScreenState extends State<TextSummaryScreen> {
 
   void _showQuizOption(BuildContext context){
     showModalBottomSheet(

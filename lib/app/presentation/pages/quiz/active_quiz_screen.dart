@@ -8,6 +8,7 @@ import 'package:studify/app/presentation/pages/quiz/widget/quiz_question_page.da
 import 'package:studify/app/presentation/widgets/app_button.dart';
 import 'package:studify/app/presentation/widgets/back_button.dart';
 import 'package:studify/core/constants/font_type.dart';
+import 'package:studify/core/router/router.dart';
 import 'package:studify/core/theme/color.dart';
 
 class ActiveQuizScreen extends StatefulWidget {
@@ -194,12 +195,7 @@ class _ActiveQuizScreenState extends State<ActiveQuizScreen> {
               ? AppButton(
                 icon: SizedBox(), 
                 text: "Submit", 
-                onPressed: (){
-                  // controller.nextPage(
-                  //   duration: const Duration(milliseconds: 200), 
-                  //   curve: Curves.easeIn
-                  // );
-                }
+                onPressed: ()=>AppRoute.go(AppRoute.quizCongratulationsScreen)
               )
               : AppButton(
                 icon: SizedBox(), 

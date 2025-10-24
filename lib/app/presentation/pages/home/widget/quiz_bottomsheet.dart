@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:studify/app/presentation/pages/home/widget/quiz_tile.dart';
 import 'package:studify/core/constants/app_images.dart';
+import 'package:studify/core/router/router.dart';
 import 'package:studify/core/theme/color.dart';
 
 class QuizBottomSheet extends StatelessWidget {
@@ -26,7 +27,7 @@ class QuizBottomSheet extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 QuizTile(title: "Study mode", subtitle: "Learn at your pace. No pressure.", iconurl: AppImages.quizStudy, color: Color(0xFFFBE6DF), fuction: (){},),
-                QuizTile(title: "Single Quiz", subtitle: "Test your speed and accuracy.", iconurl: AppImages.quizUser, color: Color(0xFFFCDEF0), fuction: (){},),
+                QuizTile(title: "Single Quiz", subtitle: "Test your speed and accuracy.", iconurl: AppImages.quizUser, color: Color(0xFFFCDEF0), fuction: ()=>AppRoute.go(AppRoute.quizHomeScreen),),
                 QuizTile(title: "Competition Quiz", subtitle: "Compete with peers, climb the ranks.", iconurl: AppImages.competitionQuiz, color: Color(0xFFDBF5FF), fuction: (){},),
               ],
             ),

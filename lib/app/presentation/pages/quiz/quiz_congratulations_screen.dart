@@ -7,6 +7,7 @@ import 'package:studify/app/presentation/widgets/aurora_background.dart';
 import 'package:studify/core/constants/app_images.dart';
 import 'package:studify/core/constants/app_svgs.dart';
 import 'package:studify/core/constants/font_type.dart';
+import 'package:studify/core/router/router.dart';
 import 'package:studify/core/theme/color.dart';
 
 class QuizCongratulationsScreen extends StatefulWidget {
@@ -104,14 +105,14 @@ class _QuizCongratulationsScreenState extends State<QuizCongratulationsScreen> {
                     )
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 12),
+                    padding: const EdgeInsets.only(top: 60, right: 19, left: 19),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextButton(onPressed: (){}, child: Text("Retry quiz")),
+                        TextButton(onPressed: ()=>AppRoute.go(AppRoute.activeQuizScreen), child: Text("Retry quiz")),
                         Container(
                           constraints: BoxConstraints(maxWidth: 196),
-                          child: AppButton(icon: SizedBox(), text: "Return home", onPressed: (){}),
+                          child: AppButton(icon: SizedBox(), text: "Return home", onPressed: ()=>AppRoute.go(AppRoute.homeScreen)),
                         )
                       ],
                     ),
