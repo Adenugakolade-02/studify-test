@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:studify/app/presentation/pages/home/widget/quiz_bottomsheet.dart';
 import 'package:studify/app/presentation/widgets/app_button.dart';
+import 'package:studify/app/presentation/widgets/back_button.dart';
 import 'package:studify/core/constants/app_svgs.dart';
 import 'package:studify/core/constants/font_type.dart';
 import 'package:studify/core/theme/color.dart';
@@ -39,19 +40,7 @@ class _TextSummaryScreenState extends ConsumerState<TextSummaryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
-        leading: Container(
-          height: 35,
-          width: 35,
-          margin: EdgeInsets.only(left: 19),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.whiteSurface,
-            border: Border.all(width: 0.2, color: AppColors.borderSurface)
-          ),
-          child: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.textTietary,), padding: EdgeInsets.zero,),
-        ),
+        leading: AppBackButton(fuction: (){}),
         title: const Text("Summary"),
       ),
       body: SafeArea(
