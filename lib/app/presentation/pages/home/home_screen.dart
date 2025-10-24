@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:studify/app/presentation/pages/Home/widget/profile_icon.dart';
 import 'package:studify/app/presentation/pages/home/widget/file_widget.dart';
+import 'package:studify/app/presentation/pages/home/widget/points_widget.dart';
 import 'package:studify/app/presentation/widgets/app_button.dart';
 import 'package:studify/core/constants/app_images.dart';
 import 'package:studify/core/constants/app_svgs.dart';
@@ -43,33 +44,7 @@ class _HomePageScreenState extends ConsumerState<HomePageScreen> {
                     name: "Divine"
                   ),
                   const Spacer(),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-                    decoration: BoxDecoration(
-                      color: AppColors.whiteSurface,
-                      borderRadius: BorderRadius.circular(900),
-                      border: Border.all(
-                        color: AppColors.borderSurface,
-                        width: .2
-                      )
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          "133",
-                          style: TextStyle(
-                            color: AppColors.textTietary,
-                            fontFamily: FontType.inter,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500
-                          ),
-                        ),
-                        const SizedBox(width: 6,),
-                        SvgPicture.asset(AppSvgs.score)
-                      ],
-                    ),
-                  )
+                  PointsWidget()
                 ],
               ),
               const SizedBox(height: 40,),

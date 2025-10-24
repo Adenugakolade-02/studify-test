@@ -1,10 +1,14 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:studify/app/data/quiz_model.dart';
+import 'package:studify/app/presentation/pages/home/widget/points_widget.dart';
 import 'package:studify/app/presentation/pages/quiz/widget/quiz_question_page.dart';
 import 'package:studify/app/presentation/widgets/app_button.dart';
 import 'package:studify/app/presentation/widgets/back_button.dart';
+import 'package:studify/core/constants/font_type.dart';
+import 'package:studify/core/theme/color.dart';
 
 class ActiveQuizScreen extends StatefulWidget {
   const ActiveQuizScreen({super.key});
@@ -18,6 +22,9 @@ class _ActiveQuizScreenState extends State<ActiveQuizScreen> {
   late PageController controller;
   int _currentPage = 0;
 
+  int _seconds =0;
+  Timer? _timer;
+
   @override
   void initState() {
     controller = PageController(initialPage: _currentPage)..addListener((){
@@ -25,15 +32,25 @@ class _ActiveQuizScreenState extends State<ActiveQuizScreen> {
         _currentPage = controller.page!.round();
       });
     });
+    _startTimer();
     super.initState();
   }
 
   @override
   void dispose() {
     controller.dispose();
+    _timer?.cancel();
     super.dispose();
   }
 
+  void _startTimer(){
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer){
+      setState(() {
+        _seconds++;
+      });
+    });
+  }
+  
   final List<QuizModel> computerQuizQuestions = [
     QuizModel(
       question: "When a computer first powers on, it runs a Power-On Self-Test (POST) and initialises hardware. Which firmware is responsible for this initial boot-up sequence before the main operating system is loaded?",
@@ -89,19 +106,42 @@ class _ActiveQuizScreenState extends State<ActiveQuizScreen> {
   Map<int, int> quizAnswers = {};
 
   void selectOption(int questionId, int selectedId){
-    // log("is called $questionId $selectedId");
     if(!quizAnswers.containsKey(questionId)){
-      // log("called here");
+      quizAnswers[questionId] = selectedId;
       setState(() {
-        quizAnswers[questionId] = selectedId;
       });
-    }else{}
+      log(quizAnswers.toString());
+    }
   }
+
+  String _formatTime() {
+    final int minutes = _seconds ~/ 60; // Integer division for minutes
+    final int seconds = _seconds % 60;  // Remainder for seconds
+
+    final String minutesStr = minutes.toString().padLeft(2, '0');
+    final String secondsStr = seconds.toString().padLeft(2, '0');
+
+    return '$minutesStr:$secondsStr';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actionsPadding: EdgeInsets.only(right: 19),
         leading: AppBackButton(fuction: (){}),
+        title: Text(
+          _formatTime(),
+          style: TextStyle(
+            fontFamily: FontType.spaceGrotesk,
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+            color: AppColors.textSecondary
+          ),
+        ),
+        actions: [
+          PointsWidget()
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 19),
@@ -133,7 +173,7 @@ class _ActiveQuizScreenState extends State<ActiveQuizScreen> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 19),
+        padding: const EdgeInsets.only(left: 19, right: 19, bottom: 35),
         child: Row(
           children: [
             TextButton(

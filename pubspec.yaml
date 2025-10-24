@@ -94,6 +94,10 @@ flutter:
           weight: 600
         - asset: assets/fonts/Inter-Regular.ttf
           weight: 400
+    - family: SpaceGrotesk
+      fonts:
+        - asset: assets/fonts/SpaceGrotesk-Bold.ttf
+          weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

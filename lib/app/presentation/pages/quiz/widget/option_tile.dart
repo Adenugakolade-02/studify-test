@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:studify/core/theme/color.dart';
 
-class OptionTile extends StatefulWidget {
+class OptionTile extends StatelessWidget {
   final String option;
   final int id;
   final int questionId;
@@ -11,11 +13,6 @@ class OptionTile extends StatefulWidget {
   
   const OptionTile({super.key, required this.option, required this.id, required this.correctId, required this.callback, this.selectedId, required this.questionId});
 
-  @override
-  State<OptionTile> createState() => _OptionTileState();
-}
-
-class _OptionTileState extends State<OptionTile> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,7 +25,7 @@ class _OptionTileState extends State<OptionTile> {
             borderRadius: BorderRadius.circular(12),
             splashColor: AppColors.borderSurface,
             highlightColor: AppColors.primaryPurple.withValues(alpha: .3),
-            onTap: ()=>widget.callback(widget.questionId, widget.id),
+            onTap: ()=>callback(questionId, id),
             child: Container(
               constraints: BoxConstraints(minHeight: 55),
               padding: EdgeInsets.symmetric(vertical: 17.5, horizontal: 24),
@@ -42,7 +39,7 @@ class _OptionTileState extends State<OptionTile> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
-                    child: Text(widget.option)
+                    child: Text(option)
                   ),
                   // const Spacer(),
                   customRadio()
@@ -56,16 +53,17 @@ class _OptionTileState extends State<OptionTile> {
     );
   }
 
-
-
   bool correctoptions(){
-    return (widget.id == widget.correctId) && (widget.id == widget.selectedId);
+    // log("called correct option");
+    return (id == correctId) && (id == selectedId);
   }
+
   bool incorrectoptions(){
-    return (widget.id != widget.correctId) && (widget.id == widget.selectedId);
+    return (id != correctId) && (id == selectedId);
   }
+
   bool showCorrectoptions(){
-    return (widget.selectedId != null) && (widget.id == widget.correctId);
+    return (selectedId != null) && (id == correctId);
   }
 
   BoxDecoration unSelectedDecoration()=> BoxDecoration(
@@ -82,12 +80,12 @@ class _OptionTileState extends State<OptionTile> {
     borderRadius: BorderRadius.circular(12),
     border: Border.all(
       width: .5,
-      color: Color(0xFF4BD37B)
+      color: AppColors.green
     ),
     boxShadow: [
       BoxShadow(
         blurRadius: 4,
-        color: Color(0xFF4BD37B)
+        color: AppColors.green
       )
     ]
   );
@@ -111,7 +109,10 @@ class _OptionTileState extends State<OptionTile> {
         shape: BoxShape.circle,
         border: Border.all(
           width: 0.2,
-          color: (widget.selectedId == null || widget.id != widget.correctId ) ? AppColors.iconGrey : correctoptions() ? AppColors.green : AppColors.redError
+          color: correctoptions() ? AppColors.green
+            : incorrectoptions() ? AppColors.redError
+            : showCorrectoptions() ? AppColors.green
+            : AppColors.borderSurface
         ),
       ),
       child: Container(
@@ -119,7 +120,10 @@ class _OptionTileState extends State<OptionTile> {
         width: 10,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: (widget.selectedId == null || widget.id != widget.correctId ) ? AppColors.whiteSurface : correctoptions() ? AppColors.green : AppColors.redError
+          color: correctoptions() ? AppColors.green
+            : incorrectoptions() ? AppColors.redError
+            : showCorrectoptions() ? AppColors.green
+            : AppColors.whiteSurface
         ),
       ),
     );
