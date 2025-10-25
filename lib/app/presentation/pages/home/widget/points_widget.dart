@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:studify/app/presentation/pages/home/provider/home_provider.dart';
 import 'package:studify/core/constants/app_svgs.dart';
 import 'package:studify/core/constants/font_type.dart';
 import 'package:studify/core/theme/color.dart';
 
-class PointsWidget extends StatelessWidget {
+class PointsWidget extends ConsumerWidget {
   const PointsWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 4, horizontal: 12),
       decoration: BoxDecoration(
@@ -23,7 +25,7 @@ class PointsWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            "133",
+            "${ref.watch(homeProvider).userPoints}",
             style: TextStyle(
               color: AppColors.textTietary,
               fontFamily: FontType.inter,

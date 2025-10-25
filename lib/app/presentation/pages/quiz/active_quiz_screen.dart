@@ -2,7 +2,9 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:studify/app/data/quiz_model.dart';
+import 'package:studify/app/presentation/pages/home/provider/home_provider.dart';
 import 'package:studify/app/presentation/pages/home/widget/points_widget.dart';
 import 'package:studify/app/presentation/pages/quiz/widget/quiz_question_page.dart';
 import 'package:studify/app/presentation/widgets/app_button.dart';
@@ -11,14 +13,14 @@ import 'package:studify/core/constants/font_type.dart';
 import 'package:studify/core/router/router.dart';
 import 'package:studify/core/theme/color.dart';
 
-class ActiveQuizScreen extends StatefulWidget {
+class ActiveQuizScreen extends ConsumerStatefulWidget {
   const ActiveQuizScreen({super.key});
 
   @override
-  State<ActiveQuizScreen> createState() => _ActiveQuizScreenState();
+  ConsumerState<ActiveQuizScreen> createState() => _ActiveQuizScreenState();
 }
 
-class _ActiveQuizScreenState extends State<ActiveQuizScreen> {
+class _ActiveQuizScreenState extends ConsumerState<ActiveQuizScreen> {
 
   late PageController controller;
   int _currentPage = 0;
@@ -111,7 +113,9 @@ class _ActiveQuizScreenState extends State<ActiveQuizScreen> {
       quizAnswers[questionId] = selectedId;
       setState(() {
       });
-      log(quizAnswers.toString());
+      if(selectedId == computerQuizQuestions[questionId].answerId){
+        ref.read(homeProvider.notifier).updateUserPoint(10);
+      }
     }
   }
 
@@ -140,6 +144,7 @@ class _ActiveQuizScreenState extends State<ActiveQuizScreen> {
             color: AppColors.textSecondary
           ),
         ),
+        
         actions: [
           PointsWidget()
         ],

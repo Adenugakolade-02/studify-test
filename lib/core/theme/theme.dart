@@ -18,6 +18,7 @@ class AppTheme{
         color: AppColors.textSecondary,
         fontFamily: 'Satoshi'
       ),
+      centerTitle: true,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData( //Serves as the base for designing the gradient button
       style: ElevatedButton.styleFrom(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studify/core/router/router.dart';
 import 'package:studify/core/theme/color.dart';
 
 class AppBackButton extends StatelessWidget {
@@ -17,7 +18,13 @@ class AppBackButton extends StatelessWidget {
         color: AppColors.whiteSurface,
         border: Border.all(width: 0.2, color: AppColors.borderSurface)
       ),
-      child: IconButton(onPressed: fuction, icon: Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.textTietary,), padding: EdgeInsets.zero,),
+      child: IconButton(
+        onPressed: (){
+          if(AppRoute.canPop() ?? false){
+            AppRoute.pop();
+          }
+        }, 
+        icon: Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.textTietary,), padding: EdgeInsets.zero,),
     );
   }
 }

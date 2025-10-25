@@ -7,58 +7,62 @@ import 'package:studify/core/theme/color.dart';
 class FileWidget extends StatelessWidget {
   final String fileName;
   final String date;
-  const FileWidget({super.key, required this.fileName, required this.date});
+  final VoidCallback callback;
+  const FileWidget({super.key, required this.fileName, required this.date, required this.callback});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-      margin: EdgeInsets.only(bottom: 16),
-      decoration: BoxDecoration(
-        color: AppColors.whiteSurface,
-        border: Border.all(
-          width: 0.2,
-          color: AppColors.borderSurface
+    return GestureDetector(
+      onTap: ()=>callback.call(),
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        margin: EdgeInsets.only(bottom: 16),
+        decoration: BoxDecoration(
+          color: AppColors.whiteSurface,
+          border: Border.all(
+            width: 0.2,
+            color: AppColors.borderSurface
+          ),
+          borderRadius: BorderRadius.circular(12)
         ),
-        borderRadius: BorderRadius.circular(12)
-      ),
-      child: Row(
-        children: [
-          SvgPicture.asset(AppSvgs.notes),
-          const SizedBox(width: 16,),
-          SizedBox(
-            height: 44,
-            child: VerticalDivider(color: AppColors.borderSurface, width: 2,)),
-          
-          const SizedBox(width: 16,),
-          Flexible(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Flexible(
-                  child: Text(
-                    fileName,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: AppColors.textSecondary
+        child: Row(
+          children: [
+            SvgPicture.asset(AppSvgs.notes),
+            const SizedBox(width: 16,),
+            SizedBox(
+              height: 44,
+              child: VerticalDivider(color: AppColors.borderSurface, width: 2,)),
+            
+            const SizedBox(width: 16,),
+            Flexible(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(
+                    child: Text(
+                      fileName,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: AppColors.textSecondary
+                      ),
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-                Text(
-                  date,
-                  style: TextStyle(
-                    fontFamily: FontType.inter,
-                    color: AppColors.textTietary,
-                    fontWeight: FontWeight.w400
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
+                  Text(
+                    date,
+                    style: TextStyle(
+                      fontFamily: FontType.inter,
+                      color: AppColors.textTietary,
+                      fontWeight: FontWeight.w400
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

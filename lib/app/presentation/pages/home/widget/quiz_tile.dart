@@ -1,7 +1,4 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:studify/core/constants/font_type.dart';
 import 'package:studify/core/theme/color.dart';
 

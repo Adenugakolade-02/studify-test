@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:studify/core/constants/font_type.dart';
 import 'package:studify/core/theme/color.dart';
 
 // ignore: must_be_immutable
@@ -28,14 +27,6 @@ class CongratulationsInfoTile extends StatelessWidget {
             ),
           ),
           detail
-          // Text(
-          //   '76%',
-          //   style: TextStyle(
-          //     fontFamily: FontType.inter,
-          //     fontWeight: FontWeight.w500,
-          //     fontSize: 14
-          //   ),
-          // )
         ],
       ),
     );
