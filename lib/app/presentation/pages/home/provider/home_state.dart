@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
-import 'package:studify/app/data/cached_file_model.dart';
+import 'package:studify/app/data/models/cached_file_model.dart';
 
 class HomeState extends Equatable{
   final List<CachedFileModel> cacheFiles;

@@ -2,36 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:studify/core/theme/color.dart';
 
-// class AuroraMeshScreen extends StatelessWidget {
-//   const AuroraMeshScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     // The main screen uses a Stack to layer the background and foreground
-//     return Scaffold(
-//       body: Stack(
-//         children: [
-//           // The animated background is placed here, at the bottom of the stack
-//           AuroraBackground(),
-//           // The foreground content is placed on top
-//           Center(
-//             child: Text(
-//               'Mesh Animation',
-//               style: TextStyle(
-//                 fontSize: 28,
-//                 fontWeight: FontWeight.bold,
-//                 color: Colors.white70,
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-
-
 class AuroraBackground extends StatefulWidget {
   const AuroraBackground({super.key});
 

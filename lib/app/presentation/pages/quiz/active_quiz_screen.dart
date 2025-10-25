@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:studify/app/data/quiz_model.dart';
+import 'package:studify/app/data/models/quiz_model.dart';
 import 'package:studify/app/presentation/pages/home/provider/home_provider.dart';
 import 'package:studify/app/presentation/pages/home/widget/points_widget.dart';
 import 'package:studify/app/presentation/pages/quiz/widget/quiz_question_page.dart';

@@ -1,7 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:hive/hive.dart';
-import 'package:studify/app/data/cached_file_model.dart';
+import 'package:studify/app/data/models/cached_file_model.dart';
 import 'package:studify/app/presentation/pages/home/provider/home_state.dart';
 
 final homeProvider = StateNotifierProvider<HomeStateNotifier, HomeState>((ref)=> HomeStateNotifier());
